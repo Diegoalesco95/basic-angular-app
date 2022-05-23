@@ -1,0 +1,38 @@
+<article
+  class="shadow-md bg-violet-600 p-2 text-white rounded-md flex flex-col"
+>
+  <ul>
+    <li class="flex gap-1">
+      <span>Server Id: </span>
+      <span>{{ server.id }}</span>
+    </li>
+    <li class="flex gap-1">
+      <span>Server Name:</span>
+      <span class="capitalize">{{ server.name }}</span>
+    </li>
+    <li class="flex gap-1">
+      <span>Server Status:</span>
+      <span
+        [ngClass]="{
+          'text-green-300': server.statusId === 1,
+          'text-red-300': server.statusId === 0
+        }"
+        >{{ server.status }}</span
+      >
+    </li>
+  </ul>
+  <div class="flex gap-2 self-end">
+    <button
+      class="rounded-full bg-white text-violet-600 px-4 py-1 cursor-pointer hover:bg-gray-100"
+      (click)="toggleStatus()"
+    >
+      Turn {{ server.status === "offline" ? "on" : "off" }}
+    </button>
+    <button
+      class="rounded-full border border-white text-white px-4 py-1 self-end cursor-pointer hover:bg-gray-100 hover:text-violet-600"
+      (click)="onDelete()"
+    >
+      Delete
+    </button>
+  </div>
+</article>
